@@ -110,17 +110,24 @@ public class Main implements Runnable, ActionListener{
       int randomNumber = (int)(Math.random()*(100 - 1 + 1 ) + 1);
       // make a for loop to go through the numbers 
       
-       
-       if( numberGuess > randomNumber){
-        resultGuess.setText("Your guess of " + numberGuess + " is too high!");
+       if(command.equals("Submit")){
+        
+      
+       if( numberGuess == randomNumber){
+        resultGuess.setText("Your guess of " + numberGuess + " is correct!");
 
-      }else if ( numberGuess < randomNumber){
+      }else if ( numberGuess < randomNumber && numberGuess != randomNumber ){
         resultGuess.setText("Your guess of " + numberGuess + " is too low!");
 
-      }else if( numberGuess == randomNumber){
+      }else if ( numberGuess > randomNumber && numberGuess != randomNumber){
         resultGuess.setText("Your guess of " + numberGuess + " is correct!");
-      }
 
+      }
+      }else if (command.equals("New Number")){
+         randomNumber = (int)(Math.random()*(100 - 1 + 1 ) + 1);
+       }
+      
+      
 
 
       
