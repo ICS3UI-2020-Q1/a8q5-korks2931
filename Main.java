@@ -6,6 +6,18 @@ public class Main implements Runnable, ActionListener{
 
   // Class Variables  
   
+  
+  JLabel guessLabel; 
+
+  JTextField userGuess;
+
+  JButton submitButton;
+  JButton newNumButton;
+
+  JLabel resultGuess;
+  
+  JPanel mainPanel;
+
 
 
   // Method to assemble our GUI
@@ -18,6 +30,67 @@ public class Main implements Runnable, ActionListener{
     frame.setSize(800,600);
     // shows the window
     frame.setVisible(true);
+
+     // initialize the main panel 
+     mainPanel = new JPanel();
+     // turn on the manual layouts 
+     mainPanel.setLayout(null);
+
+    // initialize the first label 
+    guessLabel = new JLabel("Guess the number between 0 and 100:");
+    // set bounds for the first label 
+    guessLabel.setBounds(200,200,300,30);
+    
+    // initialize the text field 
+    userGuess = new JTextField();
+    // set bounds for the text field 
+    userGuess.setBounds(200,230,280,20);
+
+    // initialize the submit button 
+    submitButton = new JButton("Submit");
+    // set bounds for the submit button 
+    submitButton.setBounds(200,260,100,20);
+   
+    
+    // initialize the new number button
+    newNumButton = new JButton("New Number");
+    //  set bounds for the new number button 
+    newNumButton.setBounds(310,260,170,20);
+    
+    // initialize the label 
+    resultGuess = new JLabel();
+    // set bounds for the label
+    resultGuess.setBounds(200,290,300,30);
+
+    // set the action command so we know which button was pressed 
+    submitButton.setActionCommand("Submit");
+    newNumButton.setActionCommand("New Number");
+
+   // add the action ActionListener
+   submitButton.addActionListener(this);
+   newNumButton.addActionListener(this);
+   
+   
+
+    // add the label to the main panel
+    mainPanel.add(guessLabel);
+    
+    // add the text field to the main panel 
+    mainPanel.add(userGuess);
+
+    // add the buttons to the main panel
+    mainPanel.add(submitButton);
+    mainPanel.add(newNumButton);
+
+    // add the last label to the main panel 
+    mainPanel.add(resultGuess);
+
+
+    
+
+    // add the main panel to the frame 
+    frame.add(mainPanel);
+
  
     
 
@@ -27,6 +100,32 @@ public class Main implements Runnable, ActionListener{
   public void actionPerformed(ActionEvent e){
     // get the command from the action
     String command = e.getActionCommand();
+
+     // get the number that the user entered
+     String guessNum = userGuess.getText();
+     
+     // convert the strings into integers
+     int numberGuess = Integer.parseInt(guessNum);
+     // genereate a random number between 1 to 100
+      int randomNumber = (int)(Math.random()*(100 - 1 + 1 ) + 1);
+      // make a for loop to go through the numbers 
+      
+       
+       if( numberGuess > randomNumber){
+        resultGuess.setText("Your guess of " + numberGuess + " is too high!");
+
+      }else if ( numberGuess < randomNumber){
+        resultGuess.setText("Your guess of " + numberGuess + " is too low!");
+
+      }else if( numberGuess == randomNumber){
+        resultGuess.setText("Your guess of " + numberGuess + " is correct!");
+      }
+
+
+
+      
+
+     
 
   }
 
