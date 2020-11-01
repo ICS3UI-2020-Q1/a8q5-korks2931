@@ -108,22 +108,27 @@ public class Main implements Runnable, ActionListener{
      int numberGuess = Integer.parseInt(guessNum);
      // genereate a random number between 1 to 100
       int randomNumber = (int)(Math.random()*(100 - 1 + 1 ) + 1);
-      // make a for loop to go through the numbers 
       
+      // if statement to see if submit button was pressed
        if(command.equals("Submit")){
-        
-      
+        // submit button was pressed 
+      // if and else if statements to see if the guessed number is bigger, smaller than the random number or if its the same
        if( numberGuess == randomNumber){
+         // print it out in the label 
         resultGuess.setText("Your guess of " + numberGuess + " is correct!");
 
       }else if ( numberGuess < randomNumber && numberGuess != randomNumber ){
+        // print it out in the label
         resultGuess.setText("Your guess of " + numberGuess + " is too low!");
 
       }else if ( numberGuess > randomNumber && numberGuess != randomNumber){
+        // print it out in the label
         resultGuess.setText("Your guess of " + numberGuess + " is correct!");
 
       }
       }else if (command.equals("New Number")){
+        // new number button was pressed
+        // change the random number to a new number
          randomNumber = (int)(Math.random()*(100 - 1 + 1 ) + 1);
        }
       
